@@ -7,6 +7,7 @@ package buscapadraoweb;
 
 import buscaweb.CapturaRecursosWeb;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -50,9 +51,18 @@ import java.util.ArrayList;
          * @param args the command line arguments
          */
         public static void main(String[] args) {
+            //Cria array com os links que serão utilizados de exemplo
+            String[] linksArr = {"https://www.econodata.com.br/empresas/todo-brasil/busca-cnpj",
+                    "https://www.consultacnpjfacil.com.br/empresas-por-estado/sc",
+                    "https://www.fateccampinas.com.br/conveniados/public/lista-empresa"};
+            Random random = new Random();
+            int numeroAleatorio = random.nextInt(3);
+
             //instancia e usa objeto que captura código-fonte de páginas Web
             CapturaRecursosWeb crw = new CapturaRecursosWeb();
-            crw.getListaRecursos().add("https://www.econodata.com.br/empresas/todo-brasil/busca-cnpj");
+            //utiliza um dos links do array de forma aleatoria
+            crw.getListaRecursos().add(linksArr[numeroAleatorio]);
+            System.out.println("utilizando o link: " + linksArr[numeroAleatorio]);
             ArrayList<String> listaCodigos = crw.carregarRecursos();
 
             String codigoHTML = listaCodigos.get(0);
@@ -282,7 +292,7 @@ import java.util.ArrayList;
             matriz[get_string_ref(estados, "q17")][get_char_ref(alfabeto, '8')] = get_string_ref(estados, "q18");
             matriz[get_string_ref(estados, "q17")][get_char_ref(alfabeto, '9')] = get_string_ref(estados, "q18");
 
-            //transições de q17
+            //transições de q18
             matriz[get_string_ref(estados, "q18")][get_char_ref(alfabeto, '0')] = -1;
             matriz[get_string_ref(estados, "q18")][get_char_ref(alfabeto, '1')] = -1;
             matriz[get_string_ref(estados, "q18")][get_char_ref(alfabeto, '2')] = -1;
